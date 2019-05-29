@@ -1,0 +1,278 @@
+@import url('https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900');
+
+*
+{
+    margin: 0;
+    padding: 0;
+    outline: 0;
+    font-family: 'Lato', sans-serif;
+}
+
+body
+{
+    background: #5C76E4;
+}
+
+.todo
+{
+    padding: 40px;
+    position: absolute;
+    top: calc(50vh - ((600px + 80px) / 2));
+    left: calc(50% - ((400px + 80px) / 2));
+    width: 400px;
+    height: 600px;
+    background: #FEFEFE;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.2);
+}
+
+.todo-head
+{
+
+}
+
+.todo-head-button
+{
+    float: right;
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    background: #5C76E4;
+    border: none;
+    border-radius: 50%;
+    text-align: center;
+    color: #FEFEFE;
+    font-size: 40px;
+    font-weight: 300;
+    cursor: pointer;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.2);
+    transition: all ease-in-out 200ms;
+}
+
+.todo-head-button:hover
+{
+    transform: scale(0.95);
+}
+
+.todo-head-button span
+{
+    display: block;
+    transition: all ease-in-out 250ms;
+}
+
+.todo-head-button.active span
+{
+    transform: rotate(135deg);
+    margin-top: 2px;
+    margin-left: 2px;
+}
+
+.todo-head-title
+{
+    font-weight: 600;
+    font-size: 30px;
+    color: #636368;
+}
+
+.todo-head-count
+{
+    margin-top: 20px;
+    font-weight: 600;
+    font-size: 20px;
+    color: #5C76E4;
+}
+
+.todo-body
+{
+    display: none;
+    padding: 40px 0px;
+}
+
+.todo-body.active
+{
+    display: block;
+}
+
+.todo-body-list
+{
+    list-style: none;
+}
+
+.todo-body-list-item
+{
+    padding-bottom: 10px;
+    height: 50px;
+    line-height: 50px;
+    cursor: pointer;
+}
+
+.todo-body-list-item:after
+{
+    content: ' ';
+    display: block;
+    position: relative;
+    top: 25px;
+    left: 50px;
+    width: 0%;
+    height: 1px;
+    background: #79797E;
+    transition: all ease-in-out 250ms;
+}
+
+.todo-body-list-item.completed:after
+{
+    width: calc(100% - 45px);
+}
+
+.todo-body-list-item-check
+{
+    float: left;
+    margin-top: 15px;
+    height: 25px;
+    width: 25px;
+    border: 1px solid #79797E;
+    border-radius: 50%;
+    background: #FEFEFE;
+    cursor: pointer;
+    transition: all ease-in-out 250ms;
+}
+
+.todo-body-list-item.completed .todo-body-list-item-check
+{
+    background: #5C76E4;
+    border: none;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.2);
+}
+
+.todo-body-list-item.completed .todo-body-list-item-check:after
+{
+    content: '✓';
+    color: #fff;
+}
+
+.todo-body-list-item-title
+{
+    float: left;
+    margin-left: 20px;
+    font-size: 20px;
+    font-weight: 400;
+    color: #636368;
+    transition: all ease-in-out 250ms;
+}
+
+.todo-body-list-item.completed .todo-body-list-item-title
+{
+    color: #79797E;
+}
+
+.todo-body-list-item-time
+{
+    float: right;
+    font-size: 20px;
+    font-weight: 300;
+    color: #79797E;
+}
+
+.todo-body-label
+{
+    display: block;
+    color: #636368;
+    font-weight: 600;
+}
+
+.todo-body-input
+{
+    height: 35px;
+    width: 100%;
+    font-size: 16px;
+    background: #FEFEFE;
+    color: #636368;
+    border: none;
+    border-bottom: 1px solid #636368;
+}
+
+.todo-information
+{
+    opacity: 0;
+    padding: 50px;
+    position: fixed;
+    top: 0px;
+    right: 0px;
+    width: 0;
+    height: 0;
+    background: #FEFEFE;
+    transition: all ease-in-out 350ms;
+    color: #636368;
+    border-radius: 0% 0% 0% 50%;
+    z-index: 9999;
+}
+
+.todo-information.active
+{
+    opacity: 1;
+    height: 100vh;
+    width: 100%;
+    border-radius: 0;
+}
+
+.todo-information-container
+{
+    margin: 0 auto;
+    width: 80%;
+    overflow: hidden;
+}
+
+.todo-information-open, .todo-information-close
+{
+    position: fixed;
+    top: 25px;
+    right: 25px;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    transition: all ease-in-out 200ms;
+}
+
+.todo-information:not(.active) .todo-information-open, .todo-information.active .todo-information-close
+{
+    opacity: 1;
+}
+
+.todo-information:not(.active) .todo-information-close, .todo-information.active .todo-information-open
+{
+    opacity: 0;
+}
+
+.todo-information-open:hover, todo-information-close:hover
+{
+    transform: scale(0.95);
+}
+
+.todo-information h1
+{
+    font-size: 40px;
+}
+
+.todo-information p
+{
+    margin-top: 20px;
+}
+
+@media only screen and (max-width: 550px)
+{
+    .todo
+    {
+        left: 0;
+        top: 0;
+        width: calc(100% - 80px);
+        height: calc(100vh - 80px);
+        border-radius: 0;
+    }
+
+    .todo-information-open, .todo-information-close, .todo-information
+    {
+        display: none;
+    }
+
+}
+
